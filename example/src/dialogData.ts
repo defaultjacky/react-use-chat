@@ -11,6 +11,7 @@ const auto_complete_node: DialogNode[] = [
   }
 ]
 
+
 const initialize_node: DialogNode[] = [
   {
     "node_id": "initialize_subject_entry",
@@ -55,7 +56,7 @@ const end_node: DialogNode[] = [
         "answer_id": "拜拜",
         "answer_text": "再见，我走啦",
         "next_node_id": null,
-        "plan_trigger": "拜拜触发器"
+        "plan_trigger": "exit_trigger"
       }
     ]
   }

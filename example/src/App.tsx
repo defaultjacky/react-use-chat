@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDialog, SCROLL_TO_BOTTOM_EVENT } from 'react-use-chat';
 import { exampleDialogData } from './dialogData.ts';
 import './App.css';
@@ -14,9 +14,9 @@ function App() {
     resetDialog,
   } = useDialog(exampleDialogData, {
     initialNodeId: 'initialize_subject_entry',
-    findNodeById: (nodeId: string) => {
-      return exampleDialogData.find((node) => node.node_id === nodeId) || null;
-    },
+    findNodeById: useCallback((nodeId: string) => {
+      return exampleDialogData.find(node => node.node_id === nodeId) || null;
+    }, []),
     // autoCompleteDelay: 1000
   });
 
