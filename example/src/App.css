@@ -1,0 +1,617 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f9;
+  color: #333;
+}
+
+.app {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.dialog-container {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.messages-history {
+  /* margin-bottom: 20px; */
+  overflow-y: auto;
+  padding-right: 10px; /* For scrollbar */
+  max-height: 280px;
+}
+
+.message-pair {
+  margin-bottom: 15px;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.question-message {
+  background-color: #e9ecef;
+  color: #495057;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  /* border-bottom-left-radius: 4px; */
+}
+
+.answer-message {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto; /* Push to the right */
+  /* border-bottom-right-radius: 4px; */
+}
+
+.system-message {
+  background-color: #f0f8ff; /* AliceBlue */
+  border: 1px solid #d1e7fd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.system-message h3 {
+  margin-top: 0;
+  color: #0056b3;
+  font-size: 1.1rem;
+}
+
+.plan-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.plan-item {
+  background-color: #e6f2ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.current-question {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.answers-container {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-answer {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ced4da;
+  text-align: left;
+}
+
+.btn-answer:hover {
+  background-color: #e2e6ea;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkbox-label:hover {
+  background-color: #e2e6ea;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-text {
+  font-size: 0.95rem;
+}
+
+.confirm-btn {
+  margin-top: 10px;
+}
+
+.auto-complete-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #007bff; /* Blue */
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dialog-complete {
+  text-align: center;
+  padding: 20px;
+  background-color: #e6ffed;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+}
+
+.dialog-complete h2 {
+  color: #155724;
+  margin-top: 0;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333333;
+  line-height: 20px;
+}
+
+.page-container {
+  overflow: scroll;
+  max-height: calc(100vh - 12.8vw);
+  height: calc(100vh - 12.8vw);
+  background: #DCF0F7;
+  box-shadow: inset 0 2px 0 0 #FFFFFF;
+  border-radius: 8px 8px 0 0;
+}
+
+.dialog-interface {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 16px;
+  background-color: #DCF0F7;
+  background-image: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.dialog-interface-header {
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #DCF0F7;
+}
+
+.dialog-interface-header-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.dialog-interface-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0 1rem 1rem;
+  padding-bottom: 24px;
+  max-height: calc(100vh - 12.8vw - 16px);
+  height: calc(100vh - 12.8vw - 16px);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* DialogHistory 样式 */
+.dialog-history {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+.dialog-history-empty {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+}
+
+.dialog-history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialog-history-item-question {
+  align-self: flex-start;
+  background-color: white;
+  color: #333;
+  padding: 12px 16px;
+  border-radius: 22px;
+  border-bottom-left-radius: 4px;
+  max-width: 80%;
+  box-shadow: inset 0 -2px 11px 0 #C4EDFA;
+  position: relative;
+  margin-left: 40px;
+  font-size: 14px;
+}
+
+.dialog-history-item-question::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  background-color: #9DD0FA;
+  /* background-image: url('../../assets/chat/tree-header.png'); */
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-history-item-answer {
+  align-self: flex-end;
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 22px;
+  border-bottom-right-radius: 4px;
+  max-width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 40px;
+  position: relative;
+  font-size: 14px;
+  animation: slideUpFadeIn 0.5s ease-out forwards;
+}
+
+.dialog-history-item-answer::after {
+  content: "我";
+  position: absolute;
+  right: -40px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* DialogNode 样式 */
+.dialog-node {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.dialog-node-progress {
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: inset 0 -2px 11px 0 #C4EDFA;
+}
+
+.dialog-node-progress-indicator {
+  background-color: #E9F2FE;
+  color: #2E86FF;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.dialog-node-progress-text {
+  color: #888;
+  font-size: 14px;
+}
+
+.dialog-node-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.dialog-node-question {
+  align-self: flex-start;
+  background-color: white;
+  color: #333;
+  padding: 12px 16px;
+  border-radius: 22px;
+  border-bottom-left-radius: 4px;
+  max-width: 80%;
+  box-shadow: inset 0 -2px 11px 0 #C4EDFA;
+  position: relative;
+  margin-left: 40px;
+  font-size: 14px;
+}
+
+.dialog-node-question::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  background-color: #9DD0FA;
+  /* background-image: url('../../assets/chat/tree-header.png'); */
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-node-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  width: 100%;
+  animation: slideUpFadeIn 0.5s ease-out forwards;
+}
+
+.dialog-node-answer {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-shadow: inset 0 -2px 11px 0 #C4EDFA;
+  border-radius: 22px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.dialog-node-answer::before {
+  position: absolute;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.dialog-node-answer-selected {
+  border: 1px solid #2E86FF !important;
+  background-color: #FFFFFF;
+}
+
+.dialog-node-answer-selected::before {
+  background-color: #3399ff;
+}
+
+.dialog-node-confirm {
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 17px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.dialog-node-confirm:hover {
+  opacity: 0.9;
+}
+
+.dialog-node-confirm:disabled {
+  background-image: none;
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.dialog-node-action {
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 17px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.dialog-node-action:hover {
+  opacity: 0.9;
+}
+
+/* LearningPlan 样式 */
+
+.learning-plan-container {
+  margin-bottom: 16px;
+}
+
+.learning-plan {
+  position: relative;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+  animation: slideUpFadeIn 0.5s ease-out forwards;
+}
+
+.learning-plan-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.learning-plan-item {
+  padding: 8px 12px 8px 8px;
+  background: #F4F5FF;
+  border-radius: 4px;
+  border-left: 4px solid #B7DFFF;
+  margin-bottom: 12px;
+}
+
+.learning-plan-item:last-child {
+  border-bottom: none;
+}
+
+.learning-plan-item-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #2E86FF;
+}
+
+.learning-plan-description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666666;
+  margin-bottom: 16px;
+}
+
+.learning-plan-button {
+  width: 100%;
+  height: 34px;
+  margin-top: 16px;
+  background-image: linear-gradient(270deg, #0387FF 0%, #02AAFF 100%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 17px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.learning-plan-button:hover {
+  opacity: 0.9;
+}
+
+.dialog-history-item-multi-answer {
+  /* 多选答案的样式 */
+}
+
+.history-learning-plan-item {
+  margin-bottom: 16px;
+} 
